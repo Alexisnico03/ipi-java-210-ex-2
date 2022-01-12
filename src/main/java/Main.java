@@ -30,7 +30,15 @@ public class Main {
         ptsDeVie= MAX_PTS_VIE;
         ptsBouclier= PTS_BOUCLIER;
         scanner.close();
+    }
+    public static boolean hasard(double pourcentage){
+        return pourcentage < Math.random();
+    }
+    public static short nombreAuHasard(short max){
+        return (short) Math.round(Math.random()* max);
+
+    }
 
 
     }
-}
+
