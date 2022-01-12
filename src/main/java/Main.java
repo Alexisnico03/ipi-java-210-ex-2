@@ -16,4 +16,21 @@ public class Main {
     public static short nbEnnemisTues;
     public static boolean bouclierActif = true;
 
+    public static void main(String[] args)
+    {
+        initPersonnage();
+    }
+
+    public static void initPersonnage(){
+
+        System.out.println("Saisir le nom de votre personnage");
+        Scanner scanner = new Scanner(System.in);
+        nomPersonnage = scanner.nextLine();
+        System.out.println("OK " + Util.color(nomPersonnage, Color.GREEN) + " ! C'est parti !");
+        ptsDeVie= MAX_PTS_VIE;
+        ptsBouclier= PTS_BOUCLIER;
+        scanner.close();
+
+
+    }
 }
