@@ -19,6 +19,9 @@ public class Main {
     public static void main(String[] args)
     {
         initPersonnage();
+        short ennemi = 5;
+        ennemi = attaqueJoueur(ennemi);
+        System.out.println(" il reste " + ennemi + " point de vie à l'ennemi");
     }
 
     public static void initPersonnage(){
@@ -28,7 +31,7 @@ public class Main {
         nomPersonnage = scanner.nextLine();
         System.out.println("OK " + Util.color(nomPersonnage, Color.GREEN) + " ! C'est parti !");
         ptsDeVie= MAX_PTS_VIE;
-        ptsBouclier= PTS_BOUCLIER;
+        ptsBouclier = bouclierActif ? PTS_BOUCLIER : 0;
         scanner.close();
     }
     public static boolean hasard(double pourcentage){
@@ -38,7 +41,14 @@ public class Main {
         return (short) Math.round(Math.random()* max);
 
     }
-
+    public static short attaqueJoueur(short ptsVieEnnemi) {
+        short forceAttaque = nombreAuHasard(MAX_ATTAQUE_JOUEUR);
+        ptsVieEnnemi -= forceAttaque;
+        System.out.print(Util.color(nomPersonnage, Color.GREEN)
+                + " attaque l'" + Util.color("ennemi" , Color.YELLOW) + " ! Il lui fait perdre "
+                + Util.color(forceAttaque, Color.PURPLE) + " points de dommage");
+        return ptsVieEnnemi;
+    }
 
     }
 
