@@ -18,7 +18,14 @@ public class Main {
 
     public static void main(String[] args)
     {
-        //TODO exercice 11
+        initPersonnage();
+        System.out.println("Saisir le nom de votre personnage");
+        Scanner scanner = new Scanner(System.in);
+        nomPersonnage = scanner.nextLine();
+        short[] ennemis = initEnnemis();
+        System.out.println("Combien souhaitez-vous combattre d'ennemis ?");
+        System.out.println("Génération des ennemis...");
+
 
     }
 
@@ -30,7 +37,7 @@ public class Main {
         System.out.println("OK " + Util.color(nomPersonnage, Color.GREEN) + " ! C'est parti !");
         ptsDeVie= MAX_PTS_VIE;
         ptsBouclier = bouclierActif ? PTS_BOUCLIER : 0;
-        scanner.close();
+        //scanner.close();
     }
     public static boolean hasard(double pourcentage){
         return pourcentage < Math.random();
