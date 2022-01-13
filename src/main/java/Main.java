@@ -49,6 +49,31 @@ public class Main {
                 + Util.color(forceAttaque, Color.PURPLE) + " points de dommage");
         return ptsVieEnnemi;
     }
+    public static void afficherPersonnage(){
+        System.out.print(Util.color(nomPersonnage, Color.GREEN) + " (" + Util.color(ptsDeVie, Color.RED));
+        if(bouclierActif){
+            System.out.print(" " + Util.color(ptsBouclier, Color.BLUE));
+        }
+        System.out.print(")");
+    }
+    static void attaqueEnnemi() {
+        //Le bouclier reçoit en priorité les dommages
+        short dommages = nombreAuHasard(MAX_ATTAQUE_ENNEMI);
+        System.out.print("L'" + Util.color("ennemi", Color.YELLOW) + " attaque " + Util.color(nomPersonnage, Color.GREEN) + " ! ");
+        System.out.print("Il lui fait " + dommages + " points de dommages ! ");
+        if (ptsBouclier > 0){
+            short dommagesBouclier = (short) Math.min(ptsBouclier, dommages);
+            System.out.print("Le bouclier perd " + Util.color(dommagesBouclier, Color.BLUE) + " points. ");
+            ptsBouclier -= dommagesBouclier;
+            dommages -= dommagesBouclier;
+        }
+        //Ensuite la vie du joueur
+        if (dommages > 0){
+            System.out.print(Util.color(nomPersonnage, Color.GREEN) + " perd " + Util.color(dommages, Color.RED) + " points de vie ! ");
+            ptsDeVie -= dommages;
+        }
+        System.out.println();
+    }
 
     }
 
